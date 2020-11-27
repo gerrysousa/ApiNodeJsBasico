@@ -1,0 +1,22 @@
+{
+  "name": "api_nodejs",
+  "version": "1.0.0",
+  "description": "descricao do projeto",
+  "main": "app.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/gerrysousa/ApiNodeJsBasico.git"
+  },
+  "author": "Gerry Sousa",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/gerrysousa/ApiNodeJsBasico/issues"
+  },
+  "homepage": "https://github.com/gerrysousa/ApiNodeJsBasico#readme",
+  "dependencies": {
+    "express": "^4.17.1"
+  }
+}
