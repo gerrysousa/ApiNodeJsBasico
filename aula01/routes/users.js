@@ -3,48 +3,51 @@ const router = express.Router();
 const Users = require('../model/user');
 const bcrypt = require('bcrypt');
 
-
-router.get('/', (req,res)=>{
-    Users.find({}, (err, data) =>{
-        if(err) return res.send(data);
-        return res.send(data);
-    });
+router.get('/', async (req,res)=>{
+    try{
+        const users = await Users.find({});
+        return res.send(users);
+    }
+    catch(err){
+        return res.send({error: 'Erro na consulta de usuarios!'});
+    }
 });
 
-router.post('/create', (req,res)=>{
+router.post('/create', async (req,res)=>{
     const {email, password} = req.body;
-
     if(!email || !password) return res.send({error: 'Dados Insuficientes!'});
 
-    Users.findOne({email}, (err, data) => {
-        if(err) return res.send({error: 'Erro ao buscar usuario!'});
-        if(data) return res.send({error: 'Usuario ja registrado!'});
-
-        Users.create(req.body, (err, data)=>{
-            if(err) return res.send({error: 'Erro ao criar usuario!'});
-
-            data.password = undefined;
-            return res.send(data);
-        });
-    });
+    try {
+        if (await Users.findOne({email})) return res.send({error: 'Usuario ja registrado!'});
+        
+        const user = await Users.create(req.body);
+        user.password = undefined;
+        return res.send(user); 
+    } 
+    catch (error) {
+        return res.send({error: 'Erro ao buscar usuario!'});
+    }
 });
 
-router.post('/auth', (req,res)=>{
+router.post('/auth', async (req,res)=>{
     const {email, password} = req.body;
-
+    
     if(!email || !password) return res.send({error: 'Dados Insuficientes!'});
 
-    Users.findOne({email}, (err, data) => {
-        if(err) return res.send({error: 'Erro ao buscar usuario!'});
-        if(!data) return res.send({error: 'Usuario nao registrado!'});
+    try {
+        const user = await Users.findOne({email}).select('+password');
+        if(!user) return res.send({error: 'Usuario nao registrado!'});
 
-        bcrypt.compare(password, data.password, (err, same)=> {
-            if(!same) return res.send({error: 'Erro ao autenticar usuario!'});
-            
-            data.password = undefined;
-            return res.send(data);
-        });
-    }).select('+password');
+        const pass_ok = await  bcrypt.compare(password, user.password);
+
+        if(!pass_ok) return res.send({error: 'Erro ao autenticar usuario!'});
+
+        user.password = undefined;
+        return res.send(user);
+    } 
+    catch (error) {
+        return res.send({error: 'Erro ao buscar usuario!'});
+    }    
 });
 
 
