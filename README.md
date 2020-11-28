@@ -77,3 +77,10 @@ Instalar o bcrypt no projeto
 Executar o comando
 $ npm install bcrypt --save
 PS C:\workspace\ApiNodeJsBasico\aula01> npm install bcrypt --save
+
+-------------------------------
+Aula08
+Instalar o jsonwebtoken no projeto
+Executar o comando
+$ npm install bcrjsonwebtokenypt --save
+PS C:\workspace\ApiNodeJsBasico\aula01> npm install jsonwebtoken --save
