@@ -70,3 +70,10 @@ Instalar o body-parser no projeto
 Executar o comando
 $ npm install body-parser --save
 PS C:\workspace\ApiNodeJsBasico\aula01> npm install body-parser --save
+
+-------------------------------
+Aula06
+Instalar o bcrypt no projeto
+Executar o comando
+$ npm install bcrypt --save
+PS C:\workspace\ApiNodeJsBasico\aula01> npm install bcrypt --save
