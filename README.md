@@ -58,3 +58,15 @@ Executar o comando
 $ npm install express --save
 PS C:\workspace\ApiNodeJsBasico\aula01> npm install express --save
 
+-------------------------------
+Aula03
+
+Instalar o mongoose no projeto
+Executar o comando
+$ npm install mongoose --save
+PS C:\workspace\ApiNodeJsBasico\aula01> npm install mongoose --save
+
+Instalar o body-parser no projeto
+Executar o comando
+$ npm install body-parser --save
+PS C:\workspace\ApiNodeJsBasico\aula01> npm install body-parser --save
