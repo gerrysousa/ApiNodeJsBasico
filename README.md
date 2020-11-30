@@ -84,3 +84,9 @@ Instalar o jsonwebtoken no projeto
 Executar o comando
 $ npm install bcrjsonwebtokenypt --save
 PS C:\workspace\ApiNodeJsBasico\aula01> npm install jsonwebtoken --save
+
+
+-------------------------------
+Aula10
+Comando para setar o ambiente de ao qual se deseja trabalhar (envs: dev, hml, prd)
+$ set NODE_ENV=prod
